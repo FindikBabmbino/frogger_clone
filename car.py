@@ -33,7 +33,7 @@ class Car(Turtle):
         self.goto(pos)
 
     def random_pos(self):
-        random_pos = random.randint(150, 200), random.randint(-200, 300)
+        random_pos = 250, random.randint(-200, 285)
         return random_pos
 
     def random_speed(self):
