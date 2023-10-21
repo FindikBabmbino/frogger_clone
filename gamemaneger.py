@@ -1,9 +1,6 @@
 
 class GameManager:
 
-    def __init__(self):
-        self.game_is_on = True
-
     def check_progress_con(self,player,scoreboard,cars):
         if player.ycor() >= 310:
             player.goto(player.return_start_pos())
@@ -12,9 +9,11 @@ class GameManager:
             for car in cars:
                 car.increase_speed()
 
-    def game_over(self,scoreboard):
-        scoreboard.write_game_over()
-        self.game_is_on = False
+    def reset_game(self,player,cars,scoreboard):
+        player.reset_player()
+        for car in cars:
+            car.reset()
+        cars.clear()
+        scoreboard.reset_score_board()
 
-    def return_game_is_on(self):
-        return self.game_is_on
+

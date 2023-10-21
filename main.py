@@ -18,7 +18,7 @@ def create_cars():
 def car_funcs(list_of_car,player,gamemaneger,scoreboard):
     for car in list_of_car:
         car.move_car()
-        car.detect_collision(player=player,gamemaneger=gamemaneger,scoreboard=scoreboard)
+        car.detect_collision(player=player,car_list=list_of_car,gamemaneger=gamemaneger,scoreboard=scoreboard)
 
 
 screen = Screen()
@@ -33,7 +33,7 @@ scoreboard = Scoreboard()
 
 gamemaneger = GameManager()
 
-cars = create_cars()
+cars = []
 
 border = Border()
 
@@ -41,8 +41,10 @@ screen.listen()
 screen.onkey(player.move_player,"Up")
 
 
-while gamemaneger.return_game_is_on():
+while True:
     time.sleep(0.1)
+    if len(cars) <= 0:
+        cars = create_cars()
 
     car_funcs(cars,player,gamemaneger,scoreboard)
     gamemaneger.check_progress_con(player,scoreboard,cars)
@@ -50,4 +52,3 @@ while gamemaneger.return_game_is_on():
     screen.update()
 
 
-screen.exitonclick()

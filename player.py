@@ -1,10 +1,12 @@
 from turtle import Turtle
 
 START_POS = (0,-250)
+START_SPEED = 20
 class Player(Turtle):
     def __init__(self):
         super().__init__()
-        self.speed = 20
+        self.speed = START_SPEED
+
         self.setheading(90)
         self.penup()
         self.color("purple")
@@ -21,4 +23,8 @@ class Player(Turtle):
 
     def increase_speed(self):
         self.speed += 1
+
+    def reset_player(self):
+        self.speed = START_SPEED
+        self.goto(START_POS)
 
